@@ -8,9 +8,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
 
 
 @NgModule({
-  declarations: [
-    PostListComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     SocialMediaRoutingModule
