@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from 'src/app/core/models/comment.model';
 
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -8,13 +9,16 @@ import { Comment } from 'src/app/core/models/comment.model';
 })
 export class CommentsComponent implements OnInit {
 
-  @Input() comments!: Comment[];
-  constructor() {
+@Input() comments!: Comment[];
+ 
+ 
+  constructor() {}
 
+  ngOnInit(): void { 
   }
 
-  ngOnInit(): void {
-    
+  onLeaveComment() {
+
   }
 
 }
