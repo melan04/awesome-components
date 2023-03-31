@@ -8,29 +8,24 @@ import { UsernamePipe } from './pipes/username.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 
-
 @NgModule({
   declarations: [
-CommentsComponent,
-ShortenPipe,
-UsernamePipe,
-TimeAgoPipe,
-HighlightDirective
+    CommentsComponent,
+    ShortenPipe,
+    UsernamePipe,
+    TimeAgoPipe,
+    HighlightDirective,
   ],
-  imports: [
-  CommonModule,
-  MaterialModule,
-  ReactiveFormsModule
-],
+  imports: [CommonModule, MaterialModule, ReactiveFormsModule],
 
   exports: [
-  CommentsComponent,
-  MaterialModule,
-  ReactiveFormsModule,
-ShortenPipe,
-UsernamePipe,
-TimeAgoPipe,
-HighlightDirective],
+    CommentsComponent,
+    MaterialModule,
+    ReactiveFormsModule,
+    ShortenPipe,
+    UsernamePipe,
+    TimeAgoPipe,
+    HighlightDirective,
+  ],
 })
-
-export class SharedModule { }
+export class SharedModule {}

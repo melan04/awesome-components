@@ -1,21 +1,35 @@
 import {
   animate,
+  animateChild,
   group,
   query,
+  stagger,
   state,
   style,
   transition,
   trigger,
+  useAnimation,
 } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Comment } from 'src/app/core/models/comment.model';
+import { flashAnimation } from '../../animations/flash.animation';
+import { slideAndFadeAnimation } from '../../animations/slide-and-fade.animation';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss'],
   animations: [
+    trigger('list', [
+      transition(':enter', [
+          query('@listItem', [
+              stagger(50, [
+                  animateChild()
+              ])
+          ])
+      ])
+  ]),
     trigger('listItem', [
       state(
         'default',
@@ -41,20 +55,19 @@ import { Comment } from 'src/app/core/models/comment.model';
             opacity: 0,
           }),
         ]),
-        style({
-          transform: 'translateX(-100%)',
-          opacity: 0,
-          'background-color': 'rgb(201, 157, 242)',
-        }),
-        animate(
-          '250ms ease-out',
-          style({
-            transform: 'translateX(0)',
-            opacity: 1,
-            'background-color': 'white',
-          })
-        ),
+        useAnimation(slideAndFadeAnimation, {
+          params: {
+              time: '5004ms',
+              startColor: 'rgb(201, 157, 242)'
+          }
+      }),
         group([
+          useAnimation(flashAnimation, {
+            params: {
+                time: '250ms',
+                flashColor: 'rgb(249,179,111)'
+            }
+        }),
           query('.comment-text', [
             animate(
               '250ms',
