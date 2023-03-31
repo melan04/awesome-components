@@ -57,7 +57,7 @@ import { slideAndFadeAnimation } from '../../animations/slide-and-fade.animation
         ]),
         useAnimation(slideAndFadeAnimation, {
           params: {
-              time: '5004ms',
+              time: '500ms',
               startColor: 'rgb(201, 157, 242)'
           }
       }),
