@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, switchMap, take, tap } from 'rxjs';
 import { CandidatesService } from '../../services/candidates.service';
 import { Candidate } from '../../models/candidate.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,11 +32,23 @@ private initObservables() {
 }
 
 onHire() {
-
+  this.candidate$.pipe(
+      take(1),
+      tap(candidate => {
+          this.candidatesService.hireCandidate(candidate.id);
+          this.onGoBack();
+      })
+  ).subscribe();
 }
 
 onRefuse() {
-
+  this.candidate$.pipe(
+      take(1),
+      tap(candidate => {
+          this.candidatesService.refuseCandidate(candidate.id);
+          this.onGoBack();
+      })
+  ).subscribe();
 }
 
 onGoBack() {
